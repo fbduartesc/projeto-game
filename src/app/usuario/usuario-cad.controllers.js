@@ -2,12 +2,12 @@
   'use strict';
 
 angular.module('Usuario')
-       .controller('UsuarioController', UsuarioController);
+       .controller('UsuarioCadController', UsuarioCadController);
 
-UsuarioController.$injector = ['$scope', '$rootScope', 'UsuarioService', '$uibModal'];
+UsuarioCadController.$injector = ['$scope', '$rootScope', 'UsuarioService', '$uibModalInstance'];
 
 
-function UsuarioController($scope, $rootScope, UsuarioService, $uibModal) {
+function UsuarioCadController($scope, $rootScope, UsuarioService, $uibModalInstance) {
     var vm = this;
 	
 	inicializa();
@@ -19,6 +19,8 @@ function UsuarioController($scope, $rootScope, UsuarioService, $uibModal) {
 	
 	function inicializaMetodos(){
 		vm.cadastrar = cadastrar;
+		vm.salvar = salvar;
+		vm.cancelar = cancelar;
 	}
 	
 	function inicializaPropriedades(){
@@ -29,10 +31,18 @@ function UsuarioController($scope, $rootScope, UsuarioService, $uibModal) {
 		var modalInstance = $uibModal.open({			
 			ariaLabelledBy: 'modal-title',
 			ariaDescribedBy: 'modal-body',
-			templateUrl: 'app/usuario/usuario-cad.html',
+			templateUrl: 'usuario-cad.html',
 			controller: 'UsuarioCadController',
 			controllerAs: 'vm'
 		});
+	}
+	
+	function salvar(){
+		$uibModalInstance.close();
+	}
+	
+	function cancelar(){
+		$uibModalInstance.dismiss('cancel');
 	}
 }
 })();
