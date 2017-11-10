@@ -29,6 +29,11 @@ function AuthenticationService(Base64, $http, $cookies, $rootScope, $timeout) {
         //    }); 
 
     };
+	
+	service.Logout = function (){
+        delete $http.defaults.headers.common['Authorization'];
+		$cookies.remove('globals');
+	}
 
     service.SetCredentials = function (username, password) {
         var authdata = Base64.encode(username + ':' + password);

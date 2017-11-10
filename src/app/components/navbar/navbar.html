@@ -11,9 +11,14 @@
 		<div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
 			<ul class="nav navbar-nav">
 				<li><a data-ng-href="/#/usuario">Usuários</a></li>
-				<li><a ng-href="#">Jogadores</a></li>
+				<li><a data-ng-href="/#/jogador">Jogadores</a></li>
 				<li><a ng-href="#">Torneios</a></li>
 			</ul>
+		</div>
+		<div class="navbar-header">
+			<a class="navbar-brand"
+			   data-ng-href="/#/login"
+			   data-ng-click="vm.logout">Logout</a>
 		</div>
 	</nav>
 
