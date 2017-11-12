@@ -1,0 +1,28 @@
+﻿<div class="modal-header">
+	<h3 class="modal-title" id="modal-title">Adicionando torneio</h3>
+</div>
+<div class="modal-body" id="modal-body">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+			  <label>Nome</label>
+			  <input type="text" ng-model="vm.cadastro.nome" class="form-control" />
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+			  <label>Período</label>
+			  <input type="text" ng-model="vm.cadastro.email" class="form-control" />
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary"
+			type="button"
+			data-ng-click="vm.salvar()">Salvar</button>
+	<button class="btn btn-warning"
+			type="button"
+			data-dismiss="modal"
+			data-ng-click="vm.cancelar()">Cancelar</button>
+</div>

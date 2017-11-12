@@ -31,6 +31,12 @@
         templateUrl: 'app/jogador/jogador.html',
         controller: 'JogadorController',
         controllerAs: 'vm'
+      })
+      .state('torneio', {
+        url: '/torneio',
+        templateUrl: 'app/torneio/torneio.html',
+        controller: 'TorneioController',
+        controllerAs: 'vm'
       });
 
     $urlRouterProvider.otherwise('/');

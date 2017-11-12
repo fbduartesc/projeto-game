@@ -1,0 +1,59 @@
+﻿<div class="row">
+	<div class="col-md-12">
+		<h1>Torneios</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-3">
+		<button type="button"
+				title="Adicionar novo jogador"
+				class="btn btn-success btn-sm btn-add"
+				data-ng-click="vm.cadastrar()">Torneio
+		</button>
+	</div>
+</div>
+<table class="table table-responsive table-striped">
+	<thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Username</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>
+		<a href=""
+		   id="editar"
+		   title="Editar">
+			<i class="glyphicon glyphicon-pencil"></i>
+		</a>
+		<a href=""
+		   id="btnContratacaoExcluir-{{contrato.id}}"
+		   title="Excluir">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	   </td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+	  <td></td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+	  <td></td>
+    </tr>
+  </tbody>
+</table>
