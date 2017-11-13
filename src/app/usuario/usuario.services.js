@@ -1,55 +1,46 @@
 ﻿(function() {
-  'use strict';
+    'use strict';
 
-angular.module('Usuario')
+    angular.module('Usuario')
         .factory('UsuarioService', UsuarioService);
 
-UsuarioService.$injector = ['Base64', '$http', '$cookies', '$rootScope', '$timeout'];
-    
-function UsuarioService(Base64, $http, $cookies, $rootScope, $timeout) {
-    var service = {};
+    UsuarioService.$injector = ['Restangular'];
 
-    service.Login = function (username, password, callback) {
-        $timeout(function () {
-            var response = { success: username === 'test' && password === 'test' };
-            if (!response.success) {
-                response.message = 'Usuário ou senha estão incorretos';
-            }
-            callback(response);
-        }, 1000);
+    function UsuarioService(Restangular) {
+        var service = {};
 
+        var uri = ['usuario'];
 
-        /* Use this for real authentication
-         ----------------------------------------------*/
-        //$http.post('/api/authenticate', { username: username, password: password })
-        //    .success(function (response) {
-        //        callback(response);
-        //    }); 
+        service.get = get;
+        service.getList = getList;
+        service.remove = remove;
+        service.save = save;
 
-    };
+        return service;
 
-    service.SetCredentials = function (username, password) {
-        var authdata = Base64.encode(username + ':' + password);
+        function get(id) {
+            return Restangular.one(uri[0], id).get();
+        }
 
-        $rootScope.globals = {
-            currentUser: {
-                username: username,
-                authdata: authdata
-            }
-        };
+        function getList(params) {
+            params = params || {};
+            params.offset = params.offset || 0;
+            return Restangular.one(uri[0])
+                .get(params);
+        }
 
-        $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
-        $cookies.putObject('globals', $rootScope.globals);
-    };
+        function remove(id) {
+            return Restangular.one(uri[0], id)
+                .remove();
+        }
 
-    service.ClearCredentials = function () {
-        $rootScope.globals = {};
-        $cookies.remove('globals');
-        $http.defaults.headers.common.Authorization = 'Basic ';
-    };
-
-    return service;
-}
+        function save(data) {
+            var rest = Restangular.all(uri[0]);
+            return !data.id ?
+                rest.post(data) :
+                rest.customPUT(data, data.id);
+        }
+    }
 
     /* jshint ignore:end */
 })();
