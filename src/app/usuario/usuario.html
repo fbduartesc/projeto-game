@@ -18,16 +18,14 @@
       <th scope="col">#</th>
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
       <th scope="col">Ações</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr data-ng-repeat="item as vm.lista">
       <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <td>{{item.nome}}</td>
+      <td>{{item.email}}</td>
       <td>
 		<a href=""
 		   id="editar"
@@ -40,20 +38,6 @@
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
 	   </td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-	  <td></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-	  <td></td>
     </tr>
   </tbody>
 </table>
