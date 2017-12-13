@@ -7,7 +7,7 @@
         .constant('malarkey', malarkey)
         .constant('moment', moment)
         .constant('ENVIROMMENTS', {
-            'URL_API': 'http://localhost:8080/'
+            'URL_API': 'http://localhost:8080/torneiopoker-web/torneiopoker/api/'
         });
 
 })();

@@ -43,6 +43,7 @@
         $urlRouterProvider.otherwise('/');
 
         RestangularProvider.setBaseUrl(ENVIROMMENTS.URL_API);
+        RestangularProvider.setDefaultHttpFields({withCredentials: true});
     }
 
 })();

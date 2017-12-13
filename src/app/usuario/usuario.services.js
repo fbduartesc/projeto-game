@@ -9,7 +9,7 @@
     function UsuarioService(Restangular) {
         var service = {};
 
-        var uri = ['usuario'];
+        var uri = ['usuarios'];
 
         service.get = get;
         service.getList = getList;
@@ -26,7 +26,7 @@
             params = params || {};
             params.offset = params.offset || 0;
             return Restangular.one(uri[0])
-                .get(params);
+                .get();
         }
 
         function remove(id) {
