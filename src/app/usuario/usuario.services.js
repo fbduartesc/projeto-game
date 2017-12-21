@@ -25,12 +25,12 @@
         function getList(params) {
             params = params || {};
             params.offset = params.offset || 0;
-            return Restangular.one(uri[0])
-                .get();
+            return Restangular.all(uri[0])
+                .getList();
         }
 
-        function remove(id) {
-            return Restangular.one(uri[0], id)
+        function remove(item) {
+            return Restangular.one(uri[0], item.id)
                 .remove();
         }
 

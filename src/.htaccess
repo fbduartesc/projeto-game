@@ -1,0 +1,11 @@
+# <IfModule mod_headers.c>
+#  Header set Access-Control-Allow-Origin "*"
+# </IfModule>
+
+        <FilesMatch "\.(gif|ico|jpe?g|png|svg|svgz|webp)$">
+            SetEnvIf Origin ":" IS_CORS
+            Header Set Access-Control-Allow-Origin "*" env=IS_CORS
+        </FilesMatch>
+    </IfModule>
+
+    

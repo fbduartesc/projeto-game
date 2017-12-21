@@ -22,18 +22,20 @@
     </tr>
   </thead>
   <tbody>
-    <tr data-ng-repeat="item as vm.lista">
-      <th scope="row">1</th>
+    <tr data-ng-repeat="item in vm.lista">
+      <th scope="row">{{item.id}}</th>
       <td>{{item.nome}}</td>
       <td>{{item.email}}</td>
       <td>
 		<a href=""
-		   id="editar"
+			 id="editar"
+			 data-ng-click="vm.editar(item)"
 		   title="Editar">
 			<i class="glyphicon glyphicon-pencil"></i>
 		</a>
 		<a href=""
-		   id="btnContratacaoExcluir-{{contrato.id}}"
+			 id="btnContratacaoExcluir-{{contrato.id}}"
+			 data-ng-click="vm.excluir(item)"
 		   title="Excluir">
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>

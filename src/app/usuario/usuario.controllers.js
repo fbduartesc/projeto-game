@@ -22,12 +22,14 @@
             var promise;
             promise = UsuarioService.getList();
             promise.then(function(data) {
-                vm.lista = data;
+                vm.lista = data.plain();
             });
         }
 
         function inicializaMetodos() {
             vm.cadastrar = cadastrar;
+            vm.editar = editar;
+            vm.excluir = excluir;
         }
 
         function inicializaPropriedades() {
@@ -40,7 +42,31 @@
                 ariaDescribedBy: 'modal-body',
                 templateUrl: 'app/usuario/usuario-cad.html',
                 controller: 'UsuarioCadController',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                resolve:{
+                    item: undefined
+                }
+            });
+        }
+
+        function editar(item) {
+            var modalInstance = $uibModal.open({
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                templateUrl: 'app/usuario/usuario-cad.html',
+                controller: 'UsuarioCadController',
+                controllerAs: 'vm',
+                resolve:{
+                    item: angular.copy(item)
+                }
+            });
+        }
+
+        function excluir(item){
+            var promise;
+            promise = UsuarioService.remove(item);
+            promise.then(function(data){
+                console.log('registro excluido com sucesso');
             });
         }
     }
