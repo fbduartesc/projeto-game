@@ -4,10 +4,10 @@
 angular.module('Jogador')
        .controller('JogadorCadController', JogadorCadController);
 
-JogadorCadController.$injector = ['$scope', '$rootScope', 'UsuarioService', '$uibModalInstance'];
+JogadorCadController.$injector = ['$scope', '$rootScope', 'JogadorService', '$uibModalInstance', 'item'];
 
 
-function JogadorCadController($scope, $rootScope, UsuarioService, $uibModalInstance) {
+function JogadorCadController($scope, $rootScope, JogadorService, $uibModalInstance, item) {
     var vm = this;
 	
 	inicializa();
@@ -15,10 +15,14 @@ function JogadorCadController($scope, $rootScope, UsuarioService, $uibModalInsta
 	function inicializa(){
 		inicializaMetodos();
 		inicializaPropriedades();
+		incializaCadastro();
+	}
+
+	function incializaCadastro(){
+		vm.cadastro = item;
 	}
 	
 	function inicializaMetodos(){
-		vm.cadastrar = cadastrar;
 		vm.salvar = salvar;
 		vm.cancelar = cancelar;
 	}
@@ -26,18 +30,13 @@ function JogadorCadController($scope, $rootScope, UsuarioService, $uibModalInsta
 	function inicializaPropriedades(){
 		vm.cadastro = {};
 	}
-	
-	function cadastrar(){
-		var modalInstance = $uibModal.open({			
-			ariaLabelledBy: 'modal-title',
-			ariaDescribedBy: 'modal-body',
-			templateUrl: 'jogador-cad.html',
-			controller: 'JogadorCadController',
-			controllerAs: 'vm'
-		});
-	}
-	
+
 	function salvar(){
+		var promise;
+		promise = JogadorService.save(vm.cadastro);
+		promise.then(function(){
+			console.log('Cadastro salvo com sucesso');
+		});
 		$uibModalInstance.close();
 	}
 	

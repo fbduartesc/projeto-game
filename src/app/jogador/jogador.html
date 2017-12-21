@@ -16,44 +16,30 @@
 	<thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Email</th>
       <th scope="col">Ações</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+    <tr data-ng-repeat="item in vm.lista">
+      <th scope="row">{{item.id}}</th>
+      <td>{{item.nome}}</td>
+      <td>{{item.email}}</td>
       <td>
-		<a href=""
-		   id="editar"
-		   title="Editar">
-			<i class="glyphicon glyphicon-pencil"></i>
-		</a>
-		<a href=""
-		   id="btnContratacaoExcluir-{{contrato.id}}"
-		   title="Excluir">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
+        <a href=""
+        id="editar"
+        data-ng-click="vm.editar(item)"
+        title="Editar">
+       <i class="glyphicon glyphicon-pencil"></i>
+     </a>
+     <a href=""
+        id="btnContratacaoExcluir-{{contrato.id}}"
+        data-ng-click="vm.excluir(item)"
+        title="Excluir">
+       <i class="glyphicon glyphicon-trash"></i>
+     </a>
 	   </td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-	  <td></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-	  <td></td>
     </tr>
   </tbody>
 </table>
