@@ -1,34 +1,40 @@
-(function() {
-  'use strict';
+(function () {
+    'use strict';
 
-  angular
-    .module('projeto')
-    .run(login)
-    .run(runBlock);
+    angular
+        .module('projeto')
+        .run(login)
+        .run(state)
+        .run(runBlock);
 
-  /** @ngInject */
-  function runBlock($log) {
+    state.$inject = ['$state', '$rootScope'];
+    function state($state, $rootScope) {
+        $rootScope.$state = $state;
+    }
 
-    $log.debug('runBlock end');
-  }
+    /** @ngInject */
+    function runBlock($log) {
 
-  login.$injector = ['$rootScope', '$location', '$cookies', '$http'];
+        $log.debug('runBlock end');
+    }
 
-  function login($rootScope, $location, $cookies, $http){
-	// keep user logged in after page refresh
-	$rootScope.globals = $cookies.getObject('globals') || {};
-	if ($rootScope.globals.currentUser) {
-	$http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
-	}
+    login.$injector = ['$rootScope', '$location', '$cookies', '$http'];
 
-	$rootScope.$on('$locationChangeStart', function () {
-		// redirect to login page if not logged in
-		if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
-			$location.path('/login');
-		}
-	});
-	//$scope.$on('$destroy', unregister);
-	//$rootScope.$on('$destroy', deregistrationCallback);
-  }
+    function login($rootScope, $location, $cookies, $http) {
+        // keep user logged in after page refresh
+        $rootScope.globals = $cookies.getObject('globals') || {};
+        if ($rootScope.globals.currentUser) {
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
+        }
+
+        $rootScope.$on('$locationChangeStart', function () {
+            // redirect to login page if not logged in
+            if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
+                $location.path('/login');
+            }
+        });
+        //$scope.$on('$destroy', unregister);
+        //$rootScope.$on('$destroy', deregistrationCallback);
+    }
 
 })();
