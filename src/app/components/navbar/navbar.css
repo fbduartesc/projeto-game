@@ -1,9 +1,9 @@
-/*--
+/*!*--
 Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
---*/
+--*!
 @font-face {
     font-family: 'Lato-Bold';
     src:url(../../../assets/fonts/Lato-Bold.ttf) format('truetype');
@@ -37,8 +37,8 @@ ul,label{
 body a:hover{
 	text-decoration:none;
 }
-/*--total-content-Starts--*/
-/*--contact--*/
+!*--total-content-Starts--*!
+!*--contact--*!
 .content-head {
 	text-align:center;
 }
@@ -46,7 +46,7 @@ body a:hover{
 	margin-top: 4%;
 }
 .content-head h1 {
-	color: #21B8C6;
+	color: #bbc607;
 	font-size: 2.5em;
 	margin: 0;
 	font-weight: bold;
@@ -171,8 +171,8 @@ body a:hover{
 	float: right;
 	cursor: pointer;
 }
-/*--contact--*/
-/*--followers--*/
+!*--contact--*!
+!*--followers--*!
 .followers {
 	margin-top: 15%;
 	background: #fff;
@@ -272,8 +272,8 @@ body a:hover{
 .content-main-left {
 	padding: 0 30px;
 }
-/*--followers--*/
-/*--social--*/
+!*--followers--*!
+!*--social--*!
 .social{
 	padding: 2.2em 0px 1.6em 0px;
 	background:#fff;
@@ -336,8 +336,8 @@ body a:hover{
 .social ul li a span.pin:hover{
 	background-position:-136px -34px;
 }
-/*--social--*/
-/*--account--*/
+!*--social--*!
+!*--account--*!
 .account{
 	padding:2.5em 0px;
 	background:#fff;
@@ -450,8 +450,8 @@ body a:hover{
 	-o-transition: 0.5s all ease;
 	-ms-transition: 0.5s all ease;
 }
-/*--account--*/
-/******* Carts *********/
+!*--account--*!
+!******* Carts *********!
 .diagram h4 {
 	position: absolute;
 	top: 44%;
@@ -487,8 +487,8 @@ body a:hover{
 	color: #575757;
 	margin: 0;
 }
-/*--chart--*/
-/*--photo--*/
+!*--chart--*!
+!*--photo--*!
 .photo-left{
 	background:#dd5555;
 	text-align:center;
@@ -514,8 +514,8 @@ body a:hover{
 	font-size: 27px;
 	font-weight: 700;
 }
-/*--photo--*/
-/*--here--*/
+!*--photo--*!
+!*--here--*!
 .here{
 	margin-top: 15%;
 	background: #fff;
@@ -581,8 +581,8 @@ body a:hover{
 	font-size:14px;
 	margin-top:3px;
 }
-/*--here--*/
-/*--content-bottom--*/
+!*--here--*!
+!*--content-bottom--*!
 .content-bottom {
 	margin-top: 7.1%;
 }
@@ -777,8 +777,8 @@ li.subitem1 a:hover  span.s4{
 	color: #dd5555;
 	font-weight: 600;
 }
-/*--content-bottom--*/
-/*--footer--*/
+!*--content-bottom--*!
+!*--footer--*!
 .footer{
 	margin-top:7%;
 	text-align:center;
@@ -793,9 +793,9 @@ li.subitem1 a:hover  span.s4{
 .footer p a:hover{
 	color:#dd5555;
 }
-/*--footer--*/
-/*--total-content-end--*/
-/*--media-quaries-starts-here--*/
+!*--footer--*!
+!*--total-content-end--*!
+!*--media-quaries-starts-here--*!
 @media (max-width:1024px){
 .congrats img {
 	width: 21%;
@@ -1426,7 +1426,8 @@ li.subitem1 a {
 	font-size: 1.35em;
 }
 }
-/*--media-quaries-end-here--*/
+!*--media-quaries-end-here--*!*/
+/*
 
 
 body{
@@ -1481,4 +1482,4 @@ body{
 .navbar-toggle .icon-bar{
 	color: #fff;
 	background: #fff;
-}
+}*/
