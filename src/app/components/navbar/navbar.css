@@ -1483,3 +1483,6 @@ body{
 	color: #fff;
 	background: #fff;
 }*/
+.navbar-brand {
+    padding: 0px 15px;
+}
