@@ -12,48 +12,39 @@
 		</button>
 	</div>
 </div>
-<table class="table table-responsive table-striped">
+<div data-ng-if="vm.lista.length <= 0">
+  Nenhum torneio encontrado
+  </div>
+  <div data-ng-if="vm.lista.length > 0">
+<table class="table table-bordered table-striped">
 	<thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
-      <th scope="col">Ações</th>
+      <th scope="col">Id</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Período</th>
+      <th scope="col" class="text-right">Ações</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>
-		<a href=""
-		   id="editar"
-		   title="Editar">
-			<i class="glyphicon glyphicon-pencil"></i>
-		</a>
-		<a href=""
-		   id="btnContratacaoExcluir-{{contrato.id}}"
-		   title="Excluir">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
+    <tr data-ng-repeat="item in vm.lista | orderBy:'id'">
+      <th scope="row">{{item.id}}</th>
+      <td>{{item.nome}}</td>
+      <td>{{item.dataInicial}} à {{item.dataFinal}}</td>
+      <td class="text-right">
+        <a href=""
+        id="editar"
+        data-ng-click="vm.editar(item)"
+        title="Editar">
+       <i class="glyphicon glyphicon-pencil"></i>
+     </a>
+     <a href=""
+        id="btnContratacaoExcluir-{{contrato.id}}"
+        data-ng-click="vm.excluir(item)"
+        title="Excluir">
+       <i class="glyphicon glyphicon-trash"></i>
+     </a>
 	   </td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-	  <td></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-	  <td></td>
     </tr>
   </tbody>
 </table>
+</div>

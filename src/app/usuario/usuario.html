@@ -12,17 +12,18 @@
 		</button>
 	</div>
 </div>
+<div class="row">
 <table class="table table-bordered table-striped">
 	<thead>
     <tr>
-      <th scope="col"></th>
+      <th scope="col">Id</th>
       <th scope="col">Nome</th>
       <th scope="col">Email</th>
       <th scope="col" class="text-right">Ações</th>
     </tr>
   </thead>
   <tbody>
-    <tr data-ng-repeat="item in vm.lista">
+    <tr data-ng-repeat="item in vm.lista | orderBy:'id'">
       <th scope="row">{{item.id}}</th>
       <td>{{item.nome}}</td>
       <td>{{item.email}}</td>
@@ -43,3 +44,4 @@
     </tr>
   </tbody>
 </table>
+</div>

@@ -35,7 +35,7 @@ function UsuarioCadController($scope, $rootScope, UsuarioService, $uibModalInsta
 		var promise;
 		promise = UsuarioService.save(vm.cadastro);
 		promise.then(function(){
-			console.log('Cadastro salvo com sucesso');
+			$rootScope.$broadcast('usuario:refresh');
 		});
 		$uibModalInstance.close();
 	}

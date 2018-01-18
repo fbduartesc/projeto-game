@@ -18,6 +18,10 @@
             inicializaCadastro();
         }
 
+        function inicializaEventos(){
+            $scope.$on('usuario:refresh', inicializaCadastro);
+        }
+
         function inicializaCadastro() {
             var promise;
             promise = UsuarioService.getList();

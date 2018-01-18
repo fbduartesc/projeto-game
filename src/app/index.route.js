@@ -43,6 +43,7 @@
         $urlRouterProvider.otherwise('/');
 
         RestangularProvider.setBaseUrl(ENVIROMMENTS.URL_API);
+        RestangularProvider.setDefaultHeaders({'Content-Type': 'application/json'});
         RestangularProvider.setDefaultHttpFields({withCredentials: true});
     }
 
