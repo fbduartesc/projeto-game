@@ -4,10 +4,10 @@
 angular.module('Usuario')
        .controller('UsuarioCadController', UsuarioCadController);
 
-UsuarioCadController.$injector = ['$scope', '$rootScope', 'UsuarioService', '$uibModalInstance', 'item'];
+UsuarioCadController.$injector = ['$scope', '$rootScope', 'UsuarioService', '$uibModalInstance', 'item', 'MENSAGEM', 'ui-notification'];
 
 
-function UsuarioCadController($scope, $rootScope, UsuarioService, $uibModalInstance, item) {
+function UsuarioCadController($scope, $rootScope, UsuarioService, $uibModalInstance, item, MENSAGEM, Notification) {
     var vm = this;
 	
 	inicializa();
@@ -33,9 +33,14 @@ function UsuarioCadController($scope, $rootScope, UsuarioService, $uibModalInsta
 	
 	function salvar(){
 		var promise;
+		Notification.success('Success notification');
 		promise = UsuarioService.save(vm.cadastro);
 		promise.then(function(){
 			$rootScope.$broadcast('usuario:refresh');
+			Notification.success('Success notification');
+			//MENSAGEM.CADASTRO
+		}, function error(){
+			Notification.success('Success notification');
 		});
 		$uibModalInstance.close();
 	}

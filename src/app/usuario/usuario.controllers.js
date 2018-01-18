@@ -16,6 +16,7 @@
             inicializaMetodos();
             inicializaPropriedades();
             inicializaCadastro();
+			inicializaEventos();
         }
 
         function inicializaEventos(){
@@ -71,6 +72,7 @@
             promise = UsuarioService.remove(item);
             promise.then(function(data){
                 console.log('registro excluido com sucesso');
+				inicializaCadastro();
             });
         }
     }
