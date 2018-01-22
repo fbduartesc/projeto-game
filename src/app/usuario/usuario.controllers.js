@@ -4,10 +4,10 @@
     angular.module('Usuario')
         .controller('UsuarioController', UsuarioController);
 
-    UsuarioController.$injector = ['$scope', '$rootScope', 'UsuarioService', '$uibModal'];
+    UsuarioController.$injector = ['$scope', '$rootScope', 'UsuarioService', '$uibModal', 'Notification'];
 
 
-    function UsuarioController($scope, $rootScope, UsuarioService, $uibModal) {
+    function UsuarioController($scope, $rootScope, UsuarioService, $uibModal, Notification) {
         var vm = this;
 
         inicializa();
@@ -71,8 +71,8 @@
             var promise;
             promise = UsuarioService.remove(item);
             promise.then(function(data){
-                console.log('registro excluido com sucesso');
-				inicializaCadastro();
+                inicializaCadastro();
+                Notification.success('Usuário excluído com sucesso');
             });
         }
     }

@@ -4,10 +4,10 @@
 angular.module('Jogador')
        .controller('JogadorController', JogadorController);
 
-JogadorController.$injector = ['$scope', '$rootScope', 'JogadorService', '$uibModal'];
+JogadorController.$injector = ['$scope', '$rootScope', 'JogadorService', '$uibModal', 'Notification'];
 
 
-function JogadorController($scope, $rootScope, JogadorService, $uibModal) {
+function JogadorController($scope, $rootScope, JogadorService, $uibModal, Notification) {
     var vm = this;
 	
 	inicializa();
@@ -16,6 +16,11 @@ function JogadorController($scope, $rootScope, JogadorService, $uibModal) {
 		inicializaMetodos();
 		inicializaPropriedades();
 		inicializaCadastro();
+		inicializaEventos();
+	}
+
+	function inicializaEventos(){
+		$scope.$on('jogadores:refresh', inicializaCadastro);
 	}
 
 	function inicializaCadastro() {
@@ -66,7 +71,8 @@ function JogadorController($scope, $rootScope, JogadorService, $uibModal) {
 		var promise;
 		promise = JogadorService.remove(item);
 		promise.then(function(data){
-			console.log('registro excluido com sucesso');
+			inicializaCadastro();
+			Notification.success('Jogador excluído com sucesso');
 		});
 	}
 }

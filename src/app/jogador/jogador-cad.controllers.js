@@ -4,10 +4,10 @@
 angular.module('Jogador')
        .controller('JogadorCadController', JogadorCadController);
 
-JogadorCadController.$injector = ['$scope', '$rootScope', 'JogadorService', '$uibModalInstance', 'item'];
+JogadorCadController.$injector = ['$scope', '$rootScope', 'JogadorService', '$uibModalInstance', 'item', 'Notification'];
 
 
-function JogadorCadController($scope, $rootScope, JogadorService, $uibModalInstance, item) {
+function JogadorCadController($scope, $rootScope, JogadorService, $uibModalInstance, item, Notification) {
     var vm = this;
 	
 	inicializa();
@@ -35,7 +35,10 @@ function JogadorCadController($scope, $rootScope, JogadorService, $uibModalInsta
 		var promise;
 		promise = JogadorService.save(vm.cadastro);
 		promise.then(function(){
-			console.log('Cadastro salvo com sucesso');
+			$rootScope.$broadcast('jogadores:refresh');
+			Notification.success('Jogador salvo com sucesso');
+		}, function error(){
+			Notification.success('Ocorreu um erro na gravação');
 		});
 		$uibModalInstance.close();
 	}

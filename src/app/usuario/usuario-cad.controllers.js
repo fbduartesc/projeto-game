@@ -33,14 +33,12 @@ function UsuarioCadController($scope, $rootScope, UsuarioService, $uibModalInsta
 	
 	function salvar(){
 		var promise;
-		Notification.success('Success notification');
 		promise = UsuarioService.save(vm.cadastro);
 		promise.then(function(){
 			$rootScope.$broadcast('usuario:refresh');
-			Notification.success('Success notification');
-			//MENSAGEM.CADASTRO
+			Notification.success('Usuário salvo com sucesso');
 		}, function error(){
-			Notification.success('Success notification');
+			Notification.success('Ocorreu um erro na gravação');
 		});
 		$uibModalInstance.close();
 	}

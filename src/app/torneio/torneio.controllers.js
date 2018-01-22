@@ -4,10 +4,10 @@
 angular.module('Torneio')
        .controller('TorneioController', TorneioController);
 
-	   TorneioController.$injector = ['$scope', '$rootScope', 'TorneioService', '$uibModal'];
+	   TorneioController.$injector = ['$scope', '$rootScope', 'TorneioService', '$uibModal', 'Notification'];
 
 
-function TorneioController($scope, $rootScope, TorneioService, $uibModal) {
+function TorneioController($scope, $rootScope, TorneioService, $uibModal, Notification) {
     var vm = this;
 	
 	inicializa();
@@ -16,6 +16,11 @@ function TorneioController($scope, $rootScope, TorneioService, $uibModal) {
 		inicializaMetodos();
 		inicializaPropriedades();
 		inicializaCadastro();
+		inicializaEventos();
+	}
+
+	function inicializaEventos(){
+		$scope.$on('torneios:refresh', inicializaCadastro);
 	}
 
 	function inicializaCadastro() {
@@ -66,7 +71,8 @@ function TorneioController($scope, $rootScope, TorneioService, $uibModal) {
 		var promise;
 		promise = TorneioService.remove(item);
 		promise.then(function(data){
-			console.log('registro excluido com sucesso');
+			inicializaCadastro();
+			Notification.success('Torneio excluído com sucesso');
 		});
 	}
 }

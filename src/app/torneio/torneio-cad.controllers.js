@@ -4,10 +4,10 @@
 angular.module('Torneio')
        .controller('TorneioCadController', TorneioCadController);
 
-	   TorneioCadController.$injector = ['$scope', '$rootScope', 'TorneioService', '$uibModalInstance', 'item'];
+	   TorneioCadController.$injector = ['$scope', '$rootScope', 'TorneioService', '$uibModalInstance', 'item', 'Notification'];
 
 
-function TorneioCadController($scope, $rootScope, TorneioService, $uibModalInstance, item) {
+function TorneioCadController($scope, $rootScope, TorneioService, $uibModalInstance, item, Notification) {
     var vm = this;
 	
 	inicializa();
@@ -35,7 +35,10 @@ function TorneioCadController($scope, $rootScope, TorneioService, $uibModalInsta
 		var promise;
 		promise = TorneioService.save(vm.cadastro);
 		promise.then(function(){
-			console.log('Cadastro salvo com sucesso');
+			$rootScope.$broadcast('torneios:refresh');
+			Notification.success('Torneio salvo com sucesso');
+		}, function error(){
+			Notification.success('Ocorreu um erro na gravação');
 		});
 		$uibModalInstance.close();
 	}
